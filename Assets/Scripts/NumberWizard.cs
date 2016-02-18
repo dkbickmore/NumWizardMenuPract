@@ -1,10 +1,10 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
-//need in order to import text to UI from code
+using UnityEngine.UI; //need in order to import text to UI from code
+using UnityEngine.SceneManagement;
 
 public class NumberWizard : MonoBehaviour {
-	//test
+	
 	int max;
 	int min;
 	int guess;
@@ -79,10 +79,11 @@ public class NumberWizard : MonoBehaviour {
 	void NextGuess ()	{
 		guess = (min + max) / 2;
 		text.text = guess.ToString();
-		maxGuessesAllowed -- 1;
+        maxGuessesAllowed = maxGuessesAllowed - 1;
 
 		if (maxGuessesAllowed == 0)
-			Application.LoadLevel("Win");
+			SceneManager.LoadScene ("Win");
+
 		//print ("Higher or lower than " + guess + "?");
 		//print ("up arrow = higher, down arrow = lower, or the enter = equal.");
 	}
